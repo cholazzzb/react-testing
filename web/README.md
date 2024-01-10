@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+```mermaid
+---
+title: Pre/Con (Presentational / Container) Pattern
+---
+flowchart TD
+    Container[Container]
+    Presentational[Presentational + unit test]
+    Hook[Hook + unit test]
+    Container-->Presentational
+    Container-->Hook
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```
+Presentational: Pure UI Component
+Hook: state, effect, ref, etc...
+Container: Integration between Presentational and Hook
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```mermaid
+---
+title: Pre/Con Pattern with Props getter
+---
+flowchart TD
+    ContainerPage[Container/Page/Screen + Integration test with mock]
+    ContainerPage-->PropsGetter
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+    HookData[Hook with data from BE]
+    HookData-->ContainerPage
 
-## Learn More
+    PropsGetter[PropsGetter]
+    PropsGetter-->Container1
+    PropsGetter-->Container2
 
-To learn more about Next.js, take a look at the following resources:
+    Container1[Container1 + Integration test]
+    Presentational1[Presentational1]
+    Hook1[Hook1]
+    Container1-->Presentational1
+    Container1-->Hook1
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    Container2[Container2 + Integration test]
+    Presentational2[Presentational2]
+    Hook2[Hook2]
+    Container2-->Presentational2
+    Container2-->Hook2
+```
