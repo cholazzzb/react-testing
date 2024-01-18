@@ -8,7 +8,11 @@ export default defineConfig({
       '~/': new URL('./src/', import.meta.url).pathname,
     },
     css: true,
+    coverage: {
+      exclude: ['next-env.d.ts', '.next', '**config.[j|t]s', '**/**route.[j|t]s'],
+    },
     environment: 'jsdom',
     exclude: [...configDefaults.exclude, './e2e/**', '**.config.[j|t]s'],
+    setupFiles: ['./vitest-setup.ts'],
   },
 });

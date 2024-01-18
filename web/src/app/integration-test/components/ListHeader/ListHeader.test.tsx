@@ -1,18 +1,27 @@
-import { afterAll, afterEach, beforeAll, describe, it } from 'vitest';
+import { render } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
 
-import { baseURL } from '~/const';
-import { server } from '../../../../mocks/node';
-import { getListName } from '../../service';
+import { ListHeader } from './ListHeader';
 
-describe('', () => {
-  beforeAll(() => server.listen());
-  afterEach(() => server.resetHandlers());
-  afterAll(() => server.close());
+describe('ListHeader', () => {
+  it('render initial state correctly', async () => {
+    const screen = render(
+      <ListHeader
+        search=''
+        onSearch={() => {}}
+        page={1}
+        onClickPrevPage={() => {}}
+        onClickNextPage={() => {}}
+        pageSize={10}
+        onClickIncreasePageSize={() => {}}
+        onClickDecreasePageSize={() => {}}
+      />
+    );
 
-  it('', async () => {
-    getListName({ name: 'a', page: 10, pageSize: 23 });
-    const user = await fetch(`${baseURL}/users`);
-    const userJSON = await user.json();
-    console.log({ userJSON });
+    expect(screen.getByText('page:')).toBeTruthy();
+    expect(screen.getByText('1')).toBeTruthy();
+
+    expect(screen.getByText('page size:')).toBeTruthy();
+    expect(screen.getByText('10')).toBeTruthy();
   });
 });

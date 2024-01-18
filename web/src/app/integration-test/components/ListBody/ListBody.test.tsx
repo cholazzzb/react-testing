@@ -1,19 +1,35 @@
 import { render } from '@testing-library/react';
-import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 import { ListBody } from './ListBody';
-import { server } from '~/mocks/node';
 
-describe('', () => {
-  beforeAll(() => server.listen());
-  afterEach(() => server.resetHandlers());
-  afterAll(() => server.close());
-
-  it('', () => {
+describe('ListBody', () => {
+  it('render correctly', () => {
     const screen = render(
-      <ListBody data={[{ id: '123123', name: 'Boby' }]} selectedData={new Set([])} onToggleSelect={() => {}} />
+      <ListBody
+        data={[
+          { id: '123123', name: 'Boby' },
+          { id: '123124', name: 'Alice' },
+        ]}
+        selectedData={new Set([])}
+        onToggleSelect={() => {}}
+      />
     );
-    const text = screen.getByText('Boby');
-    expect(text).toBeTruthy();
+    expect(screen.getByText('Boby')).toBeTruthy();
+  });
+  it('render selected correctly', () => {
+    const screen = render(
+      <ListBody
+        data={[
+          { id: '123123', name: 'Jony' },
+          { id: '123124', name: 'Trudy' },
+        ]}
+        selectedData={new Set(['Trudy'])}
+        onToggleSelect={() => {}}
+      />
+    );
+    expect(screen.getByText('Jony')).toBeTruthy();
+    expect(screen.getByText('Trudy')).toBeTruthy();
+    expect(screen.getByText('Selected')).toBeTruthy();
   });
 });

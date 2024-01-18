@@ -19,7 +19,7 @@ export function ListHeader(props: ListHeaderProps) {
       />
       <div className='w-full flex justify-between'>
         <div className='flex p-2 items-center'>
-          <p>page</p>
+          <p>page:</p>
           <button
             className='flex items-center justify-center rounded-md w-8 h-8 py-2 border-2 mx-2'
             onClick={props.onClickPrevPage}
