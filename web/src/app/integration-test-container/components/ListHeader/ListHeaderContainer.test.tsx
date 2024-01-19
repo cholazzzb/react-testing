@@ -11,7 +11,6 @@ describe('ListHeaderContainer', () => {
   };
   const spy = vi.spyOn(props, 'onRefetch');
   const screen = render(<ListHeaderContainer {...props} />);
-  debug();
 
   const [decPage, decPageSize] = screen.getAllByText('-');
   const [incPage, incPageSize] = screen.getAllByText('+');

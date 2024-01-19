@@ -1,7 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { ComponentProps } from 'react';
-import { debug } from 'vitest-preview';
 
 import { ListHeaderContainer } from './ListHeaderContainer';
 
@@ -11,7 +10,6 @@ describe('ListHeaderContainer', () => {
   };
   const spy = vi.spyOn(props, 'onRefetch');
   const screen = render(<ListHeaderContainer {...props} />);
-  debug();
 
   const [decPage, decPageSize] = screen.getAllByText('-');
   const [incPage, incPageSize] = screen.getAllByText('+');
@@ -27,6 +25,7 @@ describe('ListHeaderContainer', () => {
   it('positive case, page and pageSize should changes when user click the button', () => {
     fireEvent.click(incPage);
     expect(screen.getByText('2')).toBeTruthy();
+    expect(spy).toHaveBeenCalled();
 
     fireEvent.click(incPageSize);
     expect(screen.getByText('20')).toBeTruthy();
