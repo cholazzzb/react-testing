@@ -2,7 +2,7 @@
 
 import { useQuery } from '../../utils/useQuery';
 import { Presentational } from './Presentational';
-import { getListName } from '../../domain/service';
+import { getListName } from './service';
 
 // Container
 export default function IntegrationTest() {

@@ -1,5 +1,5 @@
-import { Name } from '../../../../domain/entity';
-import { getListName } from '../../../../domain/service';
+import { Name } from '../../entity';
+import { getListName } from '../../service';
 
 type ListBodyProps = {
   data: Awaited<ReturnType<typeof getListName>>['data'];

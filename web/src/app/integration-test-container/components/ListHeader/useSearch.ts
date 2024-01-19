@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import { getListName } from '~/domain/service';
+import { useUsers } from '../../useUsers';
 import { useDebounceFn } from '~/utils/hook';
 
-type Params = { onRefetch: (params: Parameters<typeof getListName>[0]) => void };
+type Params = { onRefetch: ReturnType<typeof useUsers>['refetch'] };
 export function useSearch(params: Params) {
   const [search, setSearch] = useState('');
 

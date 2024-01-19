@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Name } from '../../../../domain/entity';
+import { Name } from '../../entity';
 
 export function useSelectedValue() {
   const [selected, setSelected] = useState<Set<Name>>(new Set([]));

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ListBody } from './ListBody';
 import { useSelectedValue } from './useSelectedValue';
-import { getListName } from '../../../../domain/service';
+import { getListName } from '../../service';
 
 type Props = {
   data: Awaited<ReturnType<typeof getListName>>['data'];

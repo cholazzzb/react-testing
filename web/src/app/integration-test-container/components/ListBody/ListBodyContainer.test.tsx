@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
 
 import { server } from '~/mocks/node';
-import { getListName } from '../../../../domain/service';
+import { getListName } from '../../service';
 import { ListBodyContainer } from './ListBodyContainer';
 
 describe('ListBodyContainer', () => {
