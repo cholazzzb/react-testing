@@ -18,10 +18,10 @@ describe('ListHeader', () => {
       />
     );
 
-    expect(screen.getByText('page:')).toBeTruthy();
-    expect(screen.getByText('1')).toBeTruthy();
+    expect(screen.getByText('page:')).toBeInTheDocument();
+    expect(screen.getByText('1')).toBeInTheDocument();
 
-    expect(screen.getByText('page size:')).toBeTruthy();
-    expect(screen.getByText('10')).toBeTruthy();
+    expect(screen.getByText('page size:')).toBeInTheDocument();
+    expect(screen.getByText('10')).toBeInTheDocument();
   });
 });
